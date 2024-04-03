@@ -12,10 +12,10 @@ import java.util.Optional;
 @Repository
 public class ChampionsJdbcRepository implements ChampionsRepository {
 
-    private final jdbcTemplate jdbcTemplate;
-    private final RowMapper<Champion> rowMapper;
+    private final JdbcTemplate jdbcTemplate;
+    private final RowMapper<Champion> championsRowMapper;
 
-    public ChampionsJdbcRepository(JdbcTemplate jdbcTemplate){
+    public ChampionsJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.championsRowMapper = (rs, rowNum) -> new Champion(
                 rs.getLong("id"),
@@ -33,7 +33,7 @@ public class ChampionsJdbcRepository implements ChampionsRepository {
 
     @Override
     public Optional<Champion> findById(Long id) {
-//      String sql = "SELECT * FROM CHAMPIONS WHERE ID = ?";
+        String sql = "SELECT * FROM CHAMPIONS WHERE ID = ?";
         List<Champion> champions = jdbcTemplate.query(sql, championsRowMapper, id);
         return champions.stream().findFirst();
     }
