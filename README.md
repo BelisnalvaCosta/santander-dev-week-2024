@@ -24,4 +24,4 @@ RESTful API e Java 17 com Spring
 4 - Feign
 3 - RESTful
 
-[^1]: Este projeto com a orientação do Expert Venilton FalvoJr.
+[^1]: Este projeto foi feito com a orientação do Expert Venilton FalvoJr.
